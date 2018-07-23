@@ -1,11 +1,13 @@
 package com.iotimc;
 
 import com.iotimc.util.RedisUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class InitListener implements InitializingBean {
     @Autowired
     private RedisUtil redisUtil;
@@ -18,7 +20,7 @@ public class InitListener implements InitializingBean {
                 redisUtil.put("test", "123");
                 while(true) {
                     try {
-                        System.out.println("Get");
+                        log.info("Get");
                         redisUtil.get("test");
                         Thread.sleep(45000);
                     } catch(Exception e) {
