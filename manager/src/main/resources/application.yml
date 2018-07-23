@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: ${APPLICATION_NAME:testme}
+  datasource:
+    #配置数据库连接地址
+    url: ${DATASOURCE_URL:jdbc:mysql://rm-wz97r87bwuro0g5a66o.mysql.rds.aliyuncs.com:3306/elsi-trunk?useUnicode=true&characterEncoding=utf-8}
+    username: ${DATASOURCE_USERNAMR:elsi-trunk}
+    password: ${DATASOURCE_PASSWORD:imcsoft.12345}
+  redis:
+    host: redis
+    port: 6379
+    timeout: 16000
+    password: 
+    database: 0
+server:
+  port: ${SERVER_PORT:8809}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_LIST:http://iotimc:imcsoft.12345@eserver.iotdev.top/eureka}
+elsi:
+  swagger:
+    #文档标题
+    title:
+    #文档描述
+    description:
+    #文档版本号
+    version: 1.0
+  mode: ${ELSI_MODE:dev}
+  #配置云端的地址信息
+  remote:
+    #云端网关地址
+    gateway: ${ELSI_REMOTE_GATEWAY:api.iotdev.top/admin}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+    logfile:
+      enabled: true
+      sensitive: false
+    shutdown:
+      enabled: true
+logging:
+  file: ${LOGGER_HOME}/manager/logs/log.log

@@ -1,0 +1,24 @@
+version: '3.2'
+services:
+  # 模块名
+  NBLamp:
+    # 容器内机器名模块名
+    container_name: testme-release
+    ## 镜像地址
+    image: 'registry-vpc.cn-shenzhen.aliyuncs.com/iotimc/nblamp'
+    environment:
+      LANG: C.UTF-8
+      EUREKA_SERVER_LIST: http://iotimc:imcsoft.12345@elsi-eserver:9000/eureka/
+      DATASOURCE_URL: jdbc:mysql://rm-wz97r87bwuro0g5a6.mysql.rds.aliyuncs.com:3306/elsi-trunk?useUnicode=true&characterEncoding=utf-8
+      DATASOURCE_USERNAMR: elsi-trunk
+      DATASOURCE_PASSWORD: imcsoft.12345
+      APPLICATION_NAME: testme-release
+      ELSI_REMOTE_GATEWAY:
+    volumes:
+      - '/tmp:/tmp'
+      - '/usr/log:/usr/log'
+    networks:
+      - elsi-trunk
+networks:
+  elsi-trunk:
+    external: true
