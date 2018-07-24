@@ -5,7 +5,7 @@ services:
     # 容器内机器名模块名
     container_name: testme-release
     ## 镜像地址
-    image: 'registry-vpc.cn-shenzhen.aliyuncs.com/iotimc/nblamp'
+    image: 'registry.cn-shenzhen.aliyuncs.com/iotimc-cxj/testme'
     environment:
       LANG: C.UTF-8
       EUREKA_SERVER_LIST: http://iotimc:imcsoft.12345@elsi-eserver:9000/eureka/
