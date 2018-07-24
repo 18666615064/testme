@@ -10,8 +10,35 @@ spring:
     host: redis
     port: 6379
     timeout: 16000
-    password: 
+    password: 123456
     database: 0
+  rocketmq:
+    #是否启用
+    enable: true
+    #服务地址
+    namesrvAddr: namesrv:9876
+    #普通生产者组名
+    producerGroupName: producerGroup
+    #事务生产者组名
+    transactionProducerGroupName: onenetTran
+    #消费者组名
+    consumerGroupName: consumerGroup
+    #生产者实例名
+    producerInstanceName: producerIns
+    #消费者实例名
+    consumerInstanceName: consumerIns
+    #事务生产者实例名
+    producerTranInstanceName: producerTranIns
+    #一次最大消费消息量
+    consumerBatchMaxSize: 200
+    #广播消费
+    consumerBroadcasting: false
+    #主题名
+    subscribe[0]: onenet
+    #是否在启动时处理历史记录
+    enableHisConsumer: false
+    #是否启动顺序消费
+    enableOrderConsumer: false
 server:
   port: ${SERVER_PORT:8809}
 eureka:
