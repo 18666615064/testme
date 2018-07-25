@@ -22,7 +22,7 @@ public class MQUtil {
     @Autowired
     private RocketmqProperties properties;
 
-    public void send(MQBody body) {
+    public void send(MQBody body) throws Exception {
         if(!properties.getEnable()) {
             log.warn("MQ: 尝试请求发送MQ消息失败，系统未启用MQ服务。");
             return;
@@ -43,6 +43,7 @@ public class MQUtil {
         } catch(Exception e) {
             log.error("MQ: 消息发送失败{}", e.getMessage());
             e.printStackTrace();
+            throw e;
         }
     }
 }

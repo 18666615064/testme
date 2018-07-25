@@ -4,10 +4,13 @@ import com.iotimc.elsi.bean.PageRequestBean;
 import com.iotimc.elsi.bean.SortRequestBean;
 import com.iotimc.domain.DemoEntity;
 import com.iotimc.elsi.msg.common.HandleEntitySuccessMsg;
+import com.iotimc.util.MQBody;
+import com.iotimc.util.MQUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +30,8 @@ import java.util.List;
 @Api(value = "DemoController RESTful", description = "demo REST api")
 public class DemoController {
 
+    @Autowired
+    private MQUtil mqUtil;
 
     @ApiOperation(value = "通过name字段查询Demo数据", notes="通过name查询Demo数据2", response = DemoEntity.class, responseContainer="List")
     @ApiImplicitParams({
@@ -97,5 +102,12 @@ public class DemoController {
         //执行Service的方法
         HandleEntitySuccessMsg msg = new HandleEntitySuccessMsg("修改成功", String.valueOf(id));
         return ResponseEntity.ok(msg);
+    }
+
+    @RequestMapping(value = "/mq", method = RequestMethod.GET)
+    public ResponseEntity<HandleEntitySuccessMsg> testMq() throws Exception {
+        MQBody body = new MQBody("123", "Attr", "value", "send");
+        mqUtil.send(body);
+        return ResponseEntity.ok(new HandleEntitySuccessMsg("请求成功", "1"));
     }
 }
