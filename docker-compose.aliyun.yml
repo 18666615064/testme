@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   # 模块名
-  NBLamp:
+  testme:
     # 容器内机器名模块名
     container_name: testme-release
     ## 镜像地址
