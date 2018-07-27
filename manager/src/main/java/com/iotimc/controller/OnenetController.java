@@ -22,7 +22,8 @@ public class OnenetController {
     }
 
     @RequestMapping(value="/listen", method = RequestMethod.POST)
-    public void listen(@RequestBody JSONObject entity) throws Exception {
+    public ResponseEntity<Integer> listen(@RequestBody JSONObject entity) throws Exception {
         log.info("收到来自Onenet平台数据：{}", entity.toJSONString());
+        return ResponseEntity.ok(1);
     }
 }
