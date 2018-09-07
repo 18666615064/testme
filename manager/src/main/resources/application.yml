@@ -60,9 +60,6 @@ elsi:
   remote:
     #云端网关地址
     gateway: ${ELSI_REMOTE_GATEWAY:api.iotdev.top/admin}
-config:
-  onenet:
-    retry: 6
 management:
   endpoints:
     web:
