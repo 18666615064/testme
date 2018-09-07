@@ -19,7 +19,7 @@ public class MQBody implements Serializable{
     }
 
     public MQBody(String imei, String attr, Object value, String method) {
-        this(imei, attr, value, method, "onenet");
+        this(imei, attr, value, method, "command");
     }
 
     public MQBody(String imei, String attr, Object value, String method, String topic) {

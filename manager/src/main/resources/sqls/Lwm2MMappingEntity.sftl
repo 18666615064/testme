@@ -1,0 +1,4 @@
+--getList
+select *
+from lwm2m_mapping
+where product = :mappingtype
